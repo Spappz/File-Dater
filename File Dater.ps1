@@ -27,7 +27,7 @@ $output = "D:\Desktop\file.txt"
 Get-ChildItem $startPath -Recurse -Attributes "!D" | ForEach-Object {
     $_.FullName
     (
-        (($_.FullName | Resolve-Path -Relative) -replace "\\", "/") `
+        (($_.FullName | Resolve-Path -LiteralPath -Relative) -replace "\\", "/") `
         + "`t" `
         + ($_.CreationTime) `
     ) | Out-File $output -Append
